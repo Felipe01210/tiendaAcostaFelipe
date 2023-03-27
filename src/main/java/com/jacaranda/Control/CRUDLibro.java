@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import com.jacaranda.Clases.Categoria;
 import com.jacaranda.Clases.Libro;
@@ -25,16 +26,8 @@ private static Session session = CRUDSession.getSession();
 	}
 	
 	public static List<Libro> getLibros(){
-		List<Libro> listaLibros = new ArrayList<>();
-		Libro libro;
-		int id = 1;
-		do {
-			libro = session.get(Libro.class, id);
-			if(libro != null) {
-				listaLibros.add(libro);
-			}
-			id++;
-		}while(libro != null);
+		Query<Libro> query = session.createQuery("SELECT p FROM libro p");
+		ArrayList<Libro> listaLibros = (ArrayList<Libro>) query.getResultList();
 		return listaLibros;
 	}
 	

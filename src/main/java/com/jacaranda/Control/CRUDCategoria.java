@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import com.jacaranda.Clases.Categoria;
 
@@ -23,28 +24,9 @@ private static Session session = CRUDSession.getSession();
 		return res;
 	}
 	
-	public static Categoria getCategoria(String nombre) {
-		List<Categoria> listaCategorias = getCategorias();
-		Categoria res = new Categoria();
-		for (Categoria categoria:listaCategorias) {
-			if(categoria.getName().equals(nombre)) {
-				res = categoria;
-			}
-		}
-		return res;
-	}
-	
 	public static List<Categoria> getCategorias(){
-		List<Categoria> listaCategorias = new ArrayList<>();
-		Categoria categoria;
-		int id = 1;
-		do {
-			categoria = session.get(Categoria.class, id);
-			if(categoria != null) {
-				listaCategorias.add(categoria);
-			}
-			id++;
-		}while(categoria != null);
+		Query<Categoria> query = session.createQuery("SELECT p FROM categoria p");
+		ArrayList<Categoria> listaCategorias = (ArrayList<Categoria>) query.getResultList();
 		return listaCategorias;
 	}
 	

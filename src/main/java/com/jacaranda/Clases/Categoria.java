@@ -1,6 +1,7 @@
 package com.jacaranda.Clases;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -56,5 +57,29 @@ public class Categoria {
 	public int getId() {
 		return id;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(descripcion, id, listaLibros, name);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Categoria other = (Categoria) obj;
+		return Objects.equals(descripcion, other.descripcion) && id == other.id
+				&& Objects.equals(listaLibros, other.listaLibros) && Objects.equals(name, other.name);
+	}
+	
+	
 
 }
