@@ -9,7 +9,6 @@ use Librillos;
 grant all privileges on Librillos.* to 'felipe'@'%' identified by 'felipe';
 
 create table usuario(
-	id INT AUTO_INCREMENT,
 	nombre varchar(30),
 	apellidos varchar(30),
 	password varchar(32),
@@ -17,7 +16,7 @@ create table usuario(
 	genero varchar(2),
 	rol varchar(30),
 	
-	constraint pk_usuario primary key (id)
+	constraint pk_usuario primary key (nombre)
 );
 
 create table categoria(
@@ -44,6 +43,18 @@ create table libro(
 	
 	constraint pk_libro primary key (id),
 	constraint fk_categoria foreign key (categoria) references categoria(id)
+);
+
+create table compra(
+	nombre_user varchar(30),
+	id_libro INT,
+	cantidad INT,
+	precio REAL,
+	fecha DATE,
+	
+	constraint pk_compra primary key (nombre_user, id_libro, fecha),
+	constraint fk_user_compra foreign key (nombre_user) references usuario(nombre),
+	constraint fk_libro_compra foreign key (id_libro) references libro(id)
 );
 
 insert into libro (id, titulo, descripcion, stock, price, categoria) values (1, 'velit', 'Ut at dolor quis odio consequat varius.', 1, 60.4, 2);

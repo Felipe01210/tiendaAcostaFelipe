@@ -10,7 +10,12 @@ import com.jacaranda.Clases.Categoria;
 
 public class CRUDCategoria {
 	
-private static Session session = CRUDSession.getSession();
+private static Session session;
+
+	public CRUDCategoria() {
+		CRUDSession crs = new CRUDSession();
+		this.session = crs.getSession();
+	}
 	
 	public static void saveCategoria(String nombre, String descripcion) {
 		Categoria categoria = new Categoria(nombre,descripcion);

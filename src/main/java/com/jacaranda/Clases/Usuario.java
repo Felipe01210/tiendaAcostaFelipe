@@ -10,7 +10,6 @@ import javax.persistence.Id;
 public class Usuario {
 
 	@Id
-	private int id;
 	private String nombre;
 	private String apellidos;
 	private String password;
@@ -33,13 +32,6 @@ public class Usuario {
 	}
 	
 	//GETTERS & SETTERS
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -76,10 +68,12 @@ public class Usuario {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(apellidos, fecha_nac, genero, id, nombre, password, rol);
+		return Objects.hash(apellidos, fecha_nac, genero, nombre, password, rol);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -90,7 +84,7 @@ public class Usuario {
 			return false;
 		Usuario other = (Usuario) obj;
 		return Objects.equals(apellidos, other.apellidos) && Objects.equals(fecha_nac, other.fecha_nac)
-				&& Objects.equals(genero, other.genero) && id == other.id && Objects.equals(nombre, other.nombre)
+				&& Objects.equals(genero, other.genero) && Objects.equals(nombre, other.nombre)
 				&& Objects.equals(password, other.password) && Objects.equals(rol, other.rol);
 	}
 	

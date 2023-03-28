@@ -10,5 +10,8 @@
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
   <property name="hibernate.show_sql">true</property>
   <property name="hibernate.format_sql">true</property>
+  <mapping class="com.jacaranda.Clases.Usuario"/>
+  <mapping class="com.jacaranda.Clases.Libro"/>
+  <mapping class="com.jacaranda.Clases.Categoria"/>
  </session-factory>
 </hibernate-configuration>

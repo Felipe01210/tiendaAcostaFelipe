@@ -10,7 +10,7 @@ public class CRUDSession {
 	
 	private StandardServiceRegistry sr;
 	private SessionFactory sf;
-	private static Session session;
+	private Session session;
 
 	public CRUDSession() {
 		sr = new StandardServiceRegistryBuilder().configure().build();
@@ -18,7 +18,7 @@ public class CRUDSession {
 		session = sf.openSession();
 	}
 	
-	public static Session getSession() {
+	public Session getSession() {
 		return session;
 	}
 
