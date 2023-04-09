@@ -29,6 +29,8 @@
 	
 	response.sendRedirect("catalogo.jsp");
 	
+	}else{
+		response.sendRedirect("");
 	}
 	%>
 
