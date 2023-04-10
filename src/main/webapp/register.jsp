@@ -50,7 +50,7 @@
     
         <div class="row d-flex justify-content-center h-100">
             <div class="col-12 col-md-6 b-right container h-100">
-                <form class="col-12 h-100" action="loginexe.jsp" method="post">
+                <form class="col-12 h-100" action="registerexe.jsp" method="post">
                     <br>
                     <h3>REGISTER</h3>
                     <hr>
@@ -88,7 +88,7 @@
                     <button class="w-5 align-bottom" type="submit">CONFIRM</button>
                     <br>
                     <br>
-                    <span>Create your account <a href="register.jsp">here</a></span>
+                    <span>Already have an account? <a href="index.jsp">Log in here</a></span>
                 </form>
             </div>
             <div class="col-6 gradient-custom container h-100 d-none d-md-block">

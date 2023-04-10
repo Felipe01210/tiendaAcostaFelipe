@@ -8,13 +8,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 <title>Insert title here</title>
 </head>
 <body>
 
-<h3>Nice</h3>
+<header class="row">
+	<div class="col-4">
+		<h3>Nuestros Libros</h3>
+	</div>
+	<div class="col-6">
+	</div>
+	<div class="col-2">
+		<a href="logoutexe.jsp"><button>Log Out</button></a>
+	</div>
+</header>
 
-<ul>
+<ul class="list-group">
 
 <%
 	
@@ -25,8 +35,16 @@
 		Libro libro = listaLibro.get(i);
 		%>
 		
-		<li>
-			<span><%=libro.getTitulo() %></span>
+		<li class="list-group-item">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title"><%=libro.getTitulo() %></h5>
+					<p class="card-text"><%=libro.getDescripcion() %></p>
+					<p class="card-text">Stock: <%=libro.getStock() %>
+					Precio Unitario: <%=libro.getPrice() %>
+					Categoria: <%=libro.getCategoria().getId() %></p>
+				</div>
+			</div>
 		</li>
 		
 		<%

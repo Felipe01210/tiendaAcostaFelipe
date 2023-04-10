@@ -22,7 +22,7 @@
 	
 	Usuario usuario = cru.getUser(nombre);
 	
-	if(usuario.getPassword().equals(contrasenna)){
+	if(usuario.getPassword().equals(md5)){
 	
 	sesion.setAttribute("login", "true");
 	sesion.setAttribute("usuario",usuario);

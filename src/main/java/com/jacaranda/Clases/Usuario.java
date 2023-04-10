@@ -1,10 +1,13 @@
 package com.jacaranda.Clases;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity(name= "usuario")
 public class Usuario {
@@ -16,6 +19,8 @@ public class Usuario {
 	private LocalDate fecha_nac;
 	private String genero;
 	private String rol;
+	@OneToMany(mappedBy="id",cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<Compra> listaCompra;
 	
 	public Usuario() {
 		super();

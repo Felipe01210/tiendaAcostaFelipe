@@ -18,7 +18,7 @@ private Session session;
 		this.session = crs.getSession();
 	}
 	
-	public void saveElemento(String nombre, String descripcion, int stock, double precio, Categoria categoria) {
+	public void saveLibro(String nombre, String descripcion, int stock, double precio, Categoria categoria) {
 		Libro libro = new Libro(nombre,descripcion,stock,precio,categoria);
 		session.getTransaction().begin();
 		session.save(libro);

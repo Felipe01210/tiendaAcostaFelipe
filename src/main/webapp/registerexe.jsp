@@ -3,6 +3,8 @@
 <%@ page import="com.jacaranda.Clases.Usuario" %>
 <%@ page import="com.jacaranda.Control.CRUDUsuario" %>
 <%@ page import="com.jacaranda.Control.CRUDSession" %>
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +14,8 @@
 <body>
 	<%
 		CRUDUsuario cru = new CRUDUsuario();
+	
+		Boolean bandera = true;
 		
 		String nombre = request.getParameter("nombre");
 		String apellidos = request.getParameter("apellidos");
@@ -19,19 +23,39 @@
 		String md5 = cru.getMd5(contrasenna);
 		String contrasennaConf = request.getParameter("confirm_password");
 		String fecha = request.getParameter("fecha_nac");
-		//Falta transformar a date
+		LocalDate fecha_nac = null;
+		
+		try{
+			fecha_nac = LocalDate.parse(fecha);
+		}catch(Exception e){
+			response.sendRedirect("Error");
+		}
+		
+		
 		String genero = request.getParameter("genero");
 		
 		HttpSession sesion = request.getSession();
 		
-		if(contrasenna.equals(contrasennaConf)){
-			cru.saveUser(nombre, apellidos, md5, fecha, genero);
+		List<Usuario> listaUsuarios = cru.getUsers();
+		
+		for(int i = 0; i < listaUsuarios.size(); i++){
+			String Tnombre = listaUsuarios.get(i).getNombre();
+			if(nombre.equals(Tnombre)){
+				bandera = false;
+			}
+		}
+		
+		if(contrasenna.equals(contrasennaConf) && bandera == true){
+			
+			cru.saveUser(nombre, apellidos, md5, fecha_nac, genero);
 			
 			sesion.setAttribute("login", "true");
-			sesion.setAttribute("usuario", new Usuario(nombre,apellidos,md5,fecha,genero));
+			sesion.setAttribute("usuario", new Usuario(nombre,apellidos,md5,fecha_nac,genero));
 			
 			response.sendRedirect("catalogo.jsp");
 			
+		}else{
+			response.sendRedirect("Error");
 		}
 	%>
 </body>

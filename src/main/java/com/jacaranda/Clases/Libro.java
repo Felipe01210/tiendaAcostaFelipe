@@ -1,11 +1,14 @@
 package com.jacaranda.Clases;
 
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name="libro")
 public class Libro {
@@ -19,6 +22,8 @@ public class Libro {
 	@ManyToOne
 	@JoinColumn(name="categoria")
 	private Categoria categoria;
+	@OneToMany(mappedBy="id",cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<Compra> listaCompra;
 	
 	public Libro() {
 		super();
