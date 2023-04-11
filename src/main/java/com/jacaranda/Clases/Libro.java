@@ -22,7 +22,7 @@ public class Libro {
 	@ManyToOne
 	@JoinColumn(name="categoria")
 	private Categoria categoria;
-	@OneToMany(mappedBy="id",cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(mappedBy="libro",cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Compra> listaCompra;
 	
 	public Libro() {

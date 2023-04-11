@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.jacaranda.Control.CRUDSession" %>
-<%@ page import="com.jacaranda.Control.CRUDLibro" %>
-<%@ page import="com.jacaranda.Clases.Libro" %>
+<%@ page import="com.jacaranda.Control.CRUDCategoria" %>
+<%@ page import="com.jacaranda.Clases.Categoria" %>
 <%@ page import="com.jacaranda.Clases.Usuario" %>
 <%@ page import="java.util.List" %>
 <!DOCTYPE html>
@@ -22,14 +22,14 @@
 
 <header class="row">
 	<div class="col-4">
-		<h3>Nuestros Libros</h3>
+		<h3>Nuestras Categorias</h3>
 	</div>
 	<div class="col-3">
-		<a href="catalogo_cat.jsp"><button>Ver Categorias</button></a>
+		<a href="catalogo.jsp"><button>Ver Libros</button></a>
 	</div>
 	<%if(rol.equals("ADMIN")) {%>
 	<div class="col-2">
-		<a href="agregar.jsp"><button>Agregar Libro</button></a>
+		<a href="agregar_cat.jsp"><button>Agregar Categoria</button></a>
 	</div>
 	<%}else{ %>
 	<div class="col-2">
@@ -47,21 +47,19 @@
 
 <%
 	
-	CRUDLibro crl = new CRUDLibro();
+	CRUDCategoria crc = new CRUDCategoria();
 
-	List<Libro> listaLibro = crl.getLibros();
-	for(int i = 0; i< listaLibro.size(); i++){
-		Libro libro = listaLibro.get(i);
+	List<Categoria> listaCategoria = crc.getCategorias();
+	for(int i = 0; i< listaCategoria.size(); i++){
+		Categoria categoria = listaCategoria.get(i);
 		%>
 		
 		<li class="list-group-item">
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title"><%=libro.getTitulo() %></h5>
-					<p class="card-text"><%=libro.getDescripcion() %></p>
-					<p class="card-text">Stock: <%=libro.getStock() %>
-					Precio Unitario: <%=libro.getPrice() %>
-					Categoria: <%=libro.getCategoria().getDescripcion() %></p>
+					<h5 class="card-title"><%=categoria.getId()%>: <%=categoria.getName()%></h5>
+					<p class="card-text"><%=categoria.getDescripcion() %></p>
+					<p class="card-text">Libros: <%=categoria.getListaLibros().size() %></p>
 					<a href="comprarexe.jsp"><button>Comprar</button></a>
 					<%if(rol.equals("ADMIN")) {%>
 					<a href="update.jsp"><button>Actualizar</button></a>

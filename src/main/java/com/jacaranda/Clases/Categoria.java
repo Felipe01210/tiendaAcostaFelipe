@@ -15,7 +15,7 @@ public class Categoria {
 	private int id;
 	private String name;
 	private String descripcion;
-	@OneToMany(mappedBy="id",cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(mappedBy="categoria",cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Libro> listaLibros;
 	
 	public Categoria() {

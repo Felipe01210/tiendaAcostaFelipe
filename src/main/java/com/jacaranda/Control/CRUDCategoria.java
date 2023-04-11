@@ -10,32 +10,32 @@ import com.jacaranda.Clases.Categoria;
 
 public class CRUDCategoria {
 	
-private static Session session;
+private Session session;
 
 	public CRUDCategoria() {
 		CRUDSession crs = new CRUDSession();
 		this.session = crs.getSession();
 	}
 	
-	public static void saveCategoria(String nombre, String descripcion) {
+	public void saveCategoria(String nombre, String descripcion) {
 		Categoria categoria = new Categoria(nombre,descripcion);
 		session.getTransaction().begin();
 		session.save(categoria);
 		session.getTransaction().commit();
 	}
 	
-	public static Categoria getCategoria(int id) {
+	public Categoria getCategoria(int id) {
 		Categoria res = session.get(Categoria.class, id);
 		return res;
 	}
 	
-	public static List<Categoria> getCategorias(){
+	public List<Categoria> getCategorias(){
 		Query<Categoria> query = session.createQuery("SELECT p FROM categoria p");
 		ArrayList<Categoria> listaCategorias = (ArrayList<Categoria>) query.getResultList();
 		return listaCategorias;
 	}
 	
-	public static void deleteCategoria(int id) {
+	public void deleteCategoria(int id) {
 		Categoria categoria = session.get(Categoria.class, id);
 		session.getTransaction().begin();
 		session.delete(categoria);

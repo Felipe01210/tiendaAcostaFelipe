@@ -19,7 +19,7 @@ public class Usuario {
 	private LocalDate fecha_nac;
 	private String genero;
 	private String rol;
-	@OneToMany(mappedBy="id",cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(mappedBy="usuario",cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Compra> listaCompra;
 	
 	public Usuario() {
