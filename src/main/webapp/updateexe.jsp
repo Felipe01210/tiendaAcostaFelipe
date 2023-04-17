@@ -13,9 +13,6 @@
 <body>
 
 <%
-
-
-	try{
 		
 	HttpSession sesion = request.getSession();
 	
@@ -23,24 +20,35 @@
 
 	CRUDLibro crl = new CRUDLibro();
 	CRUDCategoria crc = new CRUDCategoria();
+	
+	boolean bandera = false;
 
 	String titulo = request.getParameter("titulo");
 	String descripcion = request.getParameter("descripcion");
 	int stock = Integer.valueOf(request.getParameter("stock"));
 	double price = Double.valueOf(request.getParameter("precio"));
+	int id_cat = Integer.valueOf(request.getParameter("categoria"));
 	
-	Categoria categoria = crc.getCategoria((Integer) sesion.getAttribute("categoria"));
+	Categoria categoria = crc.getCategoria(id_cat);
 	
 	Libro newLibro = new Libro(titulo, descripcion, stock, price, categoria);
 	
 	newLibro.setId(id);
 	
-	crl.updateLibro(newLibro);
+	for(Libro l: crl.getLibros()){
+		if(l.getTitulo().equals(titulo)){
+			session.setAttribute("error","libro_existente");
+			bandera = true;
+		}
+	}
 	
-	response.sendRedirect("catalogo.jsp");
-	}catch(Exception e){
+	if(!bandera){
+		crl.updateLibro(newLibro);
+		response.sendRedirect("catalogo.jsp");
+	}else{
 		response.sendRedirect("Error");
 	}
+	
 
 %>
 

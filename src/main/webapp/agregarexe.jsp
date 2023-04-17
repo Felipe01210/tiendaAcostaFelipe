@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.jacaranda.Control.CRUDLibro" %>
-<%@ page import="com.jacaranda.Control.CRUDCategoria" %>
-<%@ page import="com.jacaranda.Clases.Categoria" %>
+<%@ page import="com.jacaranda.Control.*" %>
+<%@ page import="com.jacaranda.Clases.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +14,8 @@
 
 	CRUDLibro crl = new CRUDLibro();
 	CRUDCategoria crc = new CRUDCategoria();
+	
+	boolean bandera = false;
 
 	String titulo = request.getParameter("titulo");
 	String descripcion = request.getParameter("descripcion");
@@ -24,12 +25,21 @@
 	
 	Categoria cat = crc.getCategoria(cat_id);
 	
-	try{
+	for(Libro l: crl.getLibros()){
+		if(l.getTitulo().equals(titulo)){
+			session.setAttribute("error","libro_existente");
+			bandera = true;
+		}
+	}
+	
+	if(!bandera){
 		crl.saveLibro(titulo, descripcion, stock, precio, cat);
 		response.sendRedirect("catalogo.jsp");
-	}catch(Exception e){
+	}else{
 		response.sendRedirect("Error");
 	}
+	
+	
 
 %>
 

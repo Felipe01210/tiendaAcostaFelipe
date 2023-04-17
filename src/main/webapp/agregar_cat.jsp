@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.jacaranda.Control.CRUDCategoria" %>
-<%@ page import="com.jacaranda.Clases.Categoria" %>
-
+<%@ page import="com.jacaranda.Control.*" %>
+<%@ page import="com.jacaranda.Clases.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,39 +28,23 @@
 	</div>
 </header>
 
-<%
-	CRUDCategoria crc = new CRUDCategoria();
-%>
-
 <div class="container formulario centrado">
     
         <div class="row d-flex justify-content-center h-100">
             <div class="col-12 b-right container h-100">
-                <form class="col-12 h-100" action="agregarexe.jsp" method="post">
+                <form class="col-12 h-100" action="agregar_catexe.jsp" method="post">
                     <br>
-                    <h3>AGREGAR LIBRO</h3>
+                    <h3>AGREGAR CATEGORIA</h3>
                     <hr>
                     <br>
-                    <span>Titulo:</span>
+                    <span>Nombre:</span>
                     <br>
-                    <input class="w-50" type="text" placeholder="Introduzca el titulo" name="titulo">
+                    <input class="w-50" type="text" placeholder="Introduzca el nombre de la categoria" name="nombre">
                     <br>
                     <br>
                     <span>Descripcion:</span>
                     <br>
                     <input class="w-50" type="text" placeholder="Introduzca descripcion" name="descripcion">
-                    <br>
-                    <br>
-                    <span>Stock: </span><input class="w-25" type="number" name="stock">
-                    <span>Precio: </span><input class="w-25" type="number" step="0.01" name="precio">
-                    <br>
-                    <br>
-                    <span>Seleccione su categoria:</span>
-                    <select name="categoria">
-                    	<%for(Categoria c: crc.getCategorias() ){ %>
-                    	<option value="<%=c.getId() %>"><%=c.getDescripcion() %></option>
-                    	<%} %>
-                    </select>
                     <br>
                     <br>
                     <button class="w-5 align-bottom" type="submit">CONFIRM</button>

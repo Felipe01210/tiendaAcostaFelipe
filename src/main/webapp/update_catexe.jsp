@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="com.jacaranda.Control.CRUDCategoria" %>
-<%@ page import="com.jacaranda.Clases.Categoria" %>
+<%@ page import="com.jacaranda.Control.*" %>
+<%@ page import="com.jacaranda.Clases.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,13 +12,13 @@
 
 <%
 
-	try{
-		
 		HttpSession sesion = request.getSession();
 		
 		int id = (Integer) sesion.getAttribute("actualizar");
 		
 		CRUDCategoria crc = new CRUDCategoria();
+		
+		boolean bandera = false;
 		
 		String name = request.getParameter("nombre");
 		String descripcion = request.getParameter("descripcion");
@@ -28,15 +28,21 @@
 		newCategoria.setName(name);
 		newCategoria.setDescripcion(descripcion);
 		
-		crc.updateCategoria(newCategoria);
+		for(Categoria c: crc.getCategorias()){
+			if(c.getName().equals(name)){
+				session.setAttribute("error","categoria_existente");
+				bandera = true;
+			}
+		}
 		
-		response.sendRedirect("catalogo_cat.jsp");
+		if(!bandera){
+			crc.updateCategoria(newCategoria);
+			response.sendRedirect("catalogo_cat.jsp");
+		}else{
+			response.sendRedirect("Error");
+		}
 		
 		
-	}catch(Exception e){
-		response.sendRedirect("Error");
-	}
-
 %>
 
 </body>

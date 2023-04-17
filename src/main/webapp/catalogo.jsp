@@ -65,7 +65,7 @@
 					<form action="addcarritoexe.jsp" method="post">
 						<span>Cantidad a comprar: </span><input type="number" name="cantidad"  min="1" max="<%=libro.getStock() %>">
 						<%if(libro.getStock()>0){ %>
-						<button type="submit">Comprar</button>
+						<button type="submit">Añadir a carrito</button>
 						<%} %>
 					</form>
 					<%if(rol.equals("ADMIN")) {%>

@@ -19,6 +19,7 @@ create table usuario(
 	constraint pk_usuario primary key (nombre)
 );
 
+
 create table categoria(
 	id INT AUTO_INCREMENT,
 	name varchar(30),
