@@ -39,6 +39,12 @@ public class Error extends HttpServlet {
 		case("libro_existente"):
 			msg = "El titulo que ha intentado introducir ya esta registrado";
 		break;
+		case("categoria_existente"):
+			msg = "El nombre de categoria que ha intentado introducir ya esta registrado";
+		break;
+		default:
+			msg = "Error desconocido";
+		break;
 		}
 		
 		PrintWriter out = response.getWriter();
@@ -71,7 +77,7 @@ public class Error extends HttpServlet {
 					+ "    \n"
 					+ "        <div class=\"row d-flex justify-content-center h-100\">\n"
 					+ "            <div class=\"col-12 b-right container h-100\">\n"
-					+ "                <form class=\"col-12 h-100\" action=\"catalogo.jsp\" method=\"post\">\n"
+					+ "                <form class=\"col-12 h-100\" action=\"index.jsp\" method=\"post\">\n"
 					+ "                    <br>\n"
 					+ "                    <h3>ERROR EN EL PROCESO</h3>\n"
 					+ "                    <hr>\n"

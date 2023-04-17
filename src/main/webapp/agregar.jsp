@@ -52,8 +52,8 @@
                     <input class="w-50" type="text" placeholder="Introduzca descripcion" name="descripcion">
                     <br>
                     <br>
-                    <span>Stock: </span><input class="w-25" type="number" name="stock">
-                    <span>Precio: </span><input class="w-25" type="number" step="0.01" name="precio">
+                    <span>Stock: </span><input class="w-25" type="number" name="stock" min=1 max=100>
+                    <span>Precio: </span><input class="w-25" type="number" step="0.01" name="precio" min=0.99 max=49.99>
                     <br>
                     <br>
                     <span>Seleccione su categoria:</span>

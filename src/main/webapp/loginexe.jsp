@@ -24,10 +24,10 @@
 	
 	if(usuario.getPassword().equals(md5)){
 	
-	sesion.setAttribute("login", "true");
+	sesion.setAttribute("login", true);
 	sesion.setAttribute("usuario",usuario);
 	
-	response.sendRedirect("catalogo.jsp");
+	response.sendRedirect("index.jsp");
 	
 	}else{
 		response.sendRedirect("Error");

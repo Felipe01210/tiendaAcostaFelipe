@@ -50,9 +50,9 @@
     
         <div class="row d-flex justify-content-center h-100">
             <div class="col-12 col-md-6 b-right container h-100">
-                <form class="col-12 h-100" action="registerexe.jsp" method="post">
+                <form class="col-12 h-100" action="loginexe.jsp" method="post">
                     <br>
-                    <h3>REGISTER</h3>
+                    <h3>LOG IN</h3>
                     <hr>
                     <br>
                     <span>Nombre:</span>
@@ -60,35 +60,15 @@
                     <input class="w-50" type="text" placeholder="example" name="nombre" id="nombre">
                     <br>
                     <br>
-                    <span>Apellidos:</span>
-                    <br>
-                    <input class="w-50" type="apellidos" name="apellidos" id="apellidos">
-                    <br>
-                    <br>
                     <span>Password:</span>
                     <br>
                     <input class="w-50" type="password" name="password" id="password">
-                    <br>
-                    <span>Confirm password:</span>
-                    <br>
-                    <input class="w-50" type="password" name="confirm_password" id="confirm_password">
-                    <br>
-                    <br>
-                    <span>Fecha de nacimiento:</span>
-                    <br>
-                    <input class="w-50" type="date" name="fecha_nac" id="fecha_nac">
-                    <br>
-                    <br>
-                    <span>Genero:</span>
-                    <br>
-                    <input type="radio" name="genero" id="genero" value="H"><label>Hombre</label>
-                    <input type="radio" name="genero" id="genero" value="M"><label>Mujer</label>
                     <br>
                     <br>
                     <button class="w-5 align-bottom" type="submit">CONFIRM</button>
                     <br>
                     <br>
-                    <span>Already have an account? <a href="login.jsp">Log in here</a></span>
+                    <span>Create your account <a href="register.jsp">here</a></span>
                 </form>
             </div>
             <div class="col-6 gradient-custom container h-100 d-none d-md-block">

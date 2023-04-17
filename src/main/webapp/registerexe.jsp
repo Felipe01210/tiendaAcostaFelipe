@@ -49,10 +49,10 @@
 			
 			cru.saveUser(nombre, apellidos, md5, fecha_nac, genero);
 			
-			sesion.setAttribute("login", "true");
+			sesion.setAttribute("login", true);
 			sesion.setAttribute("usuario", new Usuario(nombre,apellidos,md5,fecha_nac,genero));
 			
-			response.sendRedirect("catalogo.jsp");
+			response.sendRedirect("index.jsp");
 			
 		}else{
 			response.sendRedirect("Error");
