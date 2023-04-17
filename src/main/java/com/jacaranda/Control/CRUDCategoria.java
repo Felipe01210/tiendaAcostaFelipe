@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import com.jacaranda.Clases.Categoria;
+import com.jacaranda.Clases.Libro;
 
 public class CRUDCategoria {
 	
@@ -34,6 +35,20 @@ private Session session;
 		ArrayList<Categoria> listaCategorias = (ArrayList<Categoria>) query.getResultList();
 		return listaCategorias;
 	}
+	
+	public  void updateCategoria(Categoria cat) {
+        try {
+        	session.getTransaction().begin();
+        	session.update(cat);
+        	session.getTransaction().commit();
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+        
+        
+    }
 	
 	public void deleteCategoria(int id) {
 		Categoria categoria = session.get(Categoria.class, id);

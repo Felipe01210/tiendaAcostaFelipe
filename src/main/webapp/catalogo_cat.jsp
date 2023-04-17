@@ -60,10 +60,15 @@
 					<h5 class="card-title"><%=categoria.getId()%>: <%=categoria.getName()%></h5>
 					<p class="card-text"><%=categoria.getDescripcion() %></p>
 					<p class="card-text">Libros: <%=categoria.getListaLibros().size() %></p>
-					<a href="comprarexe.jsp"><button>Comprar</button></a>
 					<%if(rol.equals("ADMIN")) {%>
-					<a href="update.jsp"><button>Actualizar</button></a>
-					<a href="borrar.jsp"><button>Borrar</button></a>
+					<form action="update_cat.jsp" method="post">
+						<input type="text" value="<%=categoria.getId() %>" name="id_actualizar" hidden>
+						<button type="submit">Actualizar</button>
+					</form>
+					<form action="borrar_cat.jsp" method="post">
+						<input type="text" value="<%=categoria.getId() %>" name="id_borrar" hidden>
+						<button type="submit">Borrar</button>
+					</form>
 					<%} %>
 				</div>
 			</div>

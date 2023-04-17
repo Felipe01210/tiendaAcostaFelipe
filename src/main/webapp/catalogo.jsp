@@ -62,10 +62,21 @@
 					<p class="card-text">Stock: <%=libro.getStock() %>
 					Precio Unitario: <%=libro.getPrice() %>
 					Categoria: <%=libro.getCategoria().getDescripcion() %></p>
-					<a href="comprarexe.jsp"><button>Comprar</button></a>
+					<form action="addcarritoexe.jsp" method="post">
+						<span>Cantidad a comprar: </span><input type="number" name="cantidad"  min="1" max="<%=libro.getStock() %>">
+						<%if(libro.getStock()>0){ %>
+						<button type="submit">Comprar</button>
+						<%} %>
+					</form>
 					<%if(rol.equals("ADMIN")) {%>
-					<a href="update.jsp"><button>Actualizar</button></a>
-					<a href="borrar.jsp"><button>Borrar</button></a>
+					<form action="update.jsp" method="post">
+						<input type="text" value="<%=libro.getId() %>" name="id_actualizar" hidden="true">
+						<button type="submit">Actualizar</button>
+					</form>
+					<form action="borrar.jsp" method="post">
+						<input type="text" value="<%=libro.getId() %>" name="id_borrar" hidden="true">
+						<button type="submit">Borrar</button>
+					</form>
 					<%} %>
 				</div>
 			</div>

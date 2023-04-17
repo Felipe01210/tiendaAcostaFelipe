@@ -31,6 +31,15 @@ public class Compra {
 	public Compra() {
 		super();
 	}
+	
+	public Compra(Usuario usuario, Libro libro, int cantidad, double precio, LocalDate fecha) {
+		super();
+		this.usuario = usuario;
+		this.libro = libro;
+		this.cantidad = cantidad;
+		this.precio = precio;
+		this.fecha = fecha;
+	}
 
 	public Usuario getUsuario() {
 		return usuario;

@@ -65,9 +65,6 @@
                     <br>
                     <br>
                     <button class="w-5 align-bottom" type="submit">CONFIRM</button>
-                    <br>
-                    <br>
-                    <span>Create your account <a href="register.jsp">here</a></span>
                 </form>
             </div>
         </div>

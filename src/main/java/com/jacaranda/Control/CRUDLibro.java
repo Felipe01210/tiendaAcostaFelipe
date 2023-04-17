@@ -36,6 +36,20 @@ private Session session;
 		return listaLibros;
 	}
 	
+	public  void updateLibro(Libro libro) {
+        try {
+        	session.getTransaction().begin();
+        	session.update(libro);
+        	session.getTransaction().commit();
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+        
+        
+    }
+	
 	public void deleteLibro(int id) {
 		Libro libro = session.get(Libro.class, id);
 		session.getTransaction().begin();

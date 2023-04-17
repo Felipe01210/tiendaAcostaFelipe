@@ -30,7 +30,7 @@
 	response.sendRedirect("catalogo.jsp");
 	
 	}else{
-		response.sendRedirect("");
+		response.sendRedirect("Error");
 	}
 	%>
 
