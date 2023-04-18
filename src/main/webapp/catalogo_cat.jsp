@@ -25,7 +25,7 @@
 		<h3>Nuestras Categorias</h3>
 	</div>
 	<div class="col-3">
-		<a href="catalogo.jsp"><button>Ver Libros</button></a>
+		<a href="index.jsp"><button>Ver Libros</button></a>
 	</div>
 	<%if(rol.equals("ADMIN")) {%>
 	<div class="col-2">

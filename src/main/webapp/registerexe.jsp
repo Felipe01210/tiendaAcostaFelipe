@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="com.jacaranda.Clases.Usuario" %>
+<%@ page import="com.jacaranda.Clases.*" %>
 <%@ page import="com.jacaranda.Control.CRUDUsuario" %>
 <%@ page import="com.jacaranda.Control.CRUDSession" %>
 <%@ page import="java.time.LocalDate" %>
@@ -51,6 +51,10 @@
 			
 			sesion.setAttribute("login", true);
 			sesion.setAttribute("usuario", new Usuario(nombre,apellidos,md5,fecha_nac,genero));
+			
+			Carrito carrito = new Carrito(nombre);
+			
+			sesion.setAttribute("carrito",carrito);
 			
 			response.sendRedirect("index.jsp");
 			

@@ -18,6 +18,9 @@
 
 	String rol = "LOGOUT";
 	
+	//METODO PARA COMPROBAR QUE EL USUARIO ESTE LOGEADO PARA ACCEDER A LA PAGINA
+	//QUITAR PARTE DE ROL PARA APLICAR A OTRAS PAGINAS
+	
 	try{
 	if((Boolean) sesion.getAttribute("login")){
 	Usuario usuario = (Usuario) sesion.getAttribute("usuario");
@@ -85,6 +88,7 @@
 						<span>Cantidad a comprar: </span><input type="number" name="cantidad"  min="1" max="<%=libro.getStock() %>">
 						<%if(libro.getStock()>0){ %>
 						<button type="submit">Añadir a carrito</button>
+						<input value="<%=libro.getId() %>" name="id_comprar" hidden>
 						<%} %>
 					</form>
 					<%} %>

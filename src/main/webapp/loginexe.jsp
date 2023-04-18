@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.jacaranda.Control.CRUDUsuario" %>
 <%@ page import="com.jacaranda.Control.CRUDSession" %>
-<%@ page import="com.jacaranda.Clases.Usuario" %>
+<%@ page import="com.jacaranda.Clases.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +26,10 @@
 	
 	sesion.setAttribute("login", true);
 	sesion.setAttribute("usuario",usuario);
+	
+	Carrito carrito = new Carrito(nombre);
+	
+	sesion.setAttribute("carrito",carrito);
 	
 	response.sendRedirect("index.jsp");
 	

@@ -16,7 +16,7 @@ public class ItemCarrito {
 		super();
 		this.libro = libro;
 		this.cantidad = cantidad;
-		this.precio = libro.getPrice()*cantidad;
+		this.precio = Math.round((libro.getPrice()*cantidad));
 	}
 
 	public Libro getLibro() {
