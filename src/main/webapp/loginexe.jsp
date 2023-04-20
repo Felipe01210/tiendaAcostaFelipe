@@ -34,6 +34,7 @@
 	response.sendRedirect("index.jsp");
 	
 	}else{
+		sesion.setAttribute("error","login_error");
 		response.sendRedirect("Error");
 	}
 	%>

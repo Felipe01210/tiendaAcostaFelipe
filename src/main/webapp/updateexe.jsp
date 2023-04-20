@@ -44,7 +44,7 @@
 	
 	if(!bandera){
 		crl.updateLibro(newLibro);
-		response.sendRedirect("catalogo.jsp");
+		response.sendRedirect("index.jsp");
 	}else{
 		response.sendRedirect("Error");
 	}

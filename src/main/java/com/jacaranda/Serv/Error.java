@@ -42,6 +42,11 @@ public class Error extends HttpServlet {
 		case("categoria_existente"):
 			msg = "El nombre de categoria que ha intentado introducir ya esta registrado";
 		break;
+		case("login_error"):
+			msg = "El nombre de usuario o la contraseña son incorrectos";
+		break;
+		case("register_error"):
+			msg= "El nombre de usuario o la confirmación de contraseña son incorrectos";
 		default:
 			msg = "Error desconocido";
 		break;

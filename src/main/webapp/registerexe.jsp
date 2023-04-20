@@ -59,6 +59,7 @@
 			response.sendRedirect("index.jsp");
 			
 		}else{
+			sesion.setAttribute("error","register_error");
 			response.sendRedirect("Error");
 		}
 	%>

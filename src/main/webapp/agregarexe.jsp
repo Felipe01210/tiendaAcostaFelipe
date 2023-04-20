@@ -34,7 +34,7 @@
 	
 	if(!bandera){
 		crl.saveLibro(titulo, descripcion, stock, precio, cat);
-		response.sendRedirect("catalogo.jsp");
+		response.sendRedirect("index.jsp");
 	}else{
 		response.sendRedirect("Error");
 	}
